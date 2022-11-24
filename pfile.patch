@@ -1,0 +1,14 @@
+374a375
+> 451	common  kernel_2d_memcpy	sys_kernel_2d_memcpy
+376d376
+< #
+208a209,217
+> SYSCALL_DEFINE4(kernel_2d_memcpy, float *, sorc, float *, dest, int, rown, int, coln)
+> {
+> 	float matp[rown][coln];
+> 	__copy_from_user(matp,sorc,sizeof(matp));
+> 	__copy_to_user(dest,matp,sizeof(matp));
+> 	return 0;
+> 	
+> }
+> 
